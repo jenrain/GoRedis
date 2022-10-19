@@ -1,0 +1,222 @@
+[INFO][server.go:39] 2022/08/23 21:49:16 start listen
+[INFO][server.go:66] 2022/08/23 21:49:28 accepted link
+[INFO][server.go:49] 2022/08/23 21:57:19 shutting down
+[INFO][handler.go:110] 2022/08/23 21:57:19 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 21:57:19 connection closed: 127.0.0.1:7812
+[INFO][handler.go:110] 2022/08/23 21:57:19 handler shutting down...
+[INFO][server.go:39] 2022/08/23 21:57:21 start listen
+[INFO][server.go:66] 2022/08/23 21:57:24 accepted link
+[INFO][handler.go:72] 2022/08/23 21:57:32 connection closed: 127.0.0.1:8158
+[INFO][server.go:66] 2022/08/23 21:57:32 accepted link
+[INFO][server.go:49] 2022/08/23 21:57:45 shutting down
+[INFO][handler.go:110] 2022/08/23 21:57:45 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 21:57:45 connection closed: 127.0.0.1:8161
+[INFO][handler.go:110] 2022/08/23 21:57:45 handler shutting down...
+[INFO][server.go:39] 2022/08/23 22:02:13 start listen
+[INFO][server.go:66] 2022/08/23 22:02:45 accepted link
+[INFO][server.go:49] 2022/08/23 22:08:20 shutting down
+[INFO][handler.go:110] 2022/08/23 22:08:20 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 22:08:20 connection closed: 127.0.0.1:8511
+[INFO][handler.go:110] 2022/08/23 22:08:20 handler shutting down...
+[INFO][server.go:39] 2022/08/23 22:09:08 start listen
+[INFO][server.go:66] 2022/08/23 22:09:10 accepted link
+[INFO][handler.go:72] 2022/08/23 22:09:15 connection closed: 127.0.0.1:9054
+[INFO][server.go:66] 2022/08/23 22:09:16 accepted link
+[ERROR][database.go:56] 2022/08/23 22:25:47 index out of bound
+[INFO][server.go:49] 2022/08/23 22:31:53 shutting down
+[INFO][handler.go:110] 2022/08/23 22:31:53 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 22:31:53 connection closed: 127.0.0.1:9057
+[INFO][handler.go:110] 2022/08/23 22:31:53 handler shutting down...
+[INFO][server.go:39] 2022/08/23 22:32:17 start listen
+[INFO][server.go:66] 2022/08/23 22:32:18 accepted link
+[INFO][server.go:49] 2022/08/23 22:33:51 shutting down
+[INFO][handler.go:110] 2022/08/23 22:33:51 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 22:33:51 connection closed: 127.0.0.1:9920
+[INFO][handler.go:110] 2022/08/23 22:33:51 handler shutting down...
+[INFO][server.go:39] 2022/08/23 22:33:55 start listen
+[INFO][server.go:66] 2022/08/23 22:33:56 accepted link
+[INFO][server.go:49] 2022/08/23 22:34:11 shutting down
+[INFO][handler.go:110] 2022/08/23 22:34:11 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 22:34:11 connection closed: 127.0.0.1:9975
+[INFO][handler.go:110] 2022/08/23 22:34:11 handler shutting down...
+[INFO][server.go:39] 2022/08/23 22:35:23 start listen
+[INFO][server.go:66] 2022/08/23 22:35:40 accepted link
+[ERROR][database.go:56] 2022/08/23 22:35:42 index out of bound
+[INFO][server.go:49] 2022/08/23 22:38:38 shutting down
+[INFO][handler.go:110] 2022/08/23 22:38:38 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 22:38:38 connection closed: 127.0.0.1:10046
+[INFO][handler.go:110] 2022/08/23 22:38:38 handler shutting down...
+[INFO][server.go:39] 2022/08/23 22:39:22 start listen
+[INFO][server.go:66] 2022/08/23 22:39:23 accepted link
+[ERROR][database.go:56] 2022/08/23 22:40:16 index out of bound
+[INFO][server.go:49] 2022/08/23 22:42:32 shutting down
+[INFO][handler.go:110] 2022/08/23 22:42:32 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 22:42:32 connection closed: 127.0.0.1:10171
+[INFO][handler.go:110] 2022/08/23 22:42:32 handler shutting down...
+[INFO][server.go:39] 2022/08/23 22:42:34 start listen
+[INFO][server.go:66] 2022/08/23 22:42:37 accepted link
+[INFO][handler.go:72] 2022/08/23 22:42:39 connection closed: 127.0.0.1:10286
+[INFO][server.go:66] 2022/08/23 22:42:39 accepted link
+[INFO][server.go:49] 2022/08/23 22:47:50 shutting down
+[INFO][handler.go:110] 2022/08/23 22:47:50 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 22:47:50 connection closed: 127.0.0.1:10288
+[INFO][handler.go:110] 2022/08/23 22:47:50 handler shutting down...
+[INFO][server.go:39] 2022/08/23 22:47:52 start listen
+[INFO][server.go:66] 2022/08/23 22:47:55 accepted link
+[ERROR][database.go:56] 2022/08/23 22:57:12 interface conversion: interface {} is *list.LinkedList, not []uint8
+[ERROR][parser.go:58] 2022/08/23 22:58:57 goroutine 20 [running]:
+runtime/debug.Stack()
+	D:/1Project/1SDK/GoSDK/go1.17.2/src/runtime/debug/stack.go:24 +0x65
+GoRedis/resp/parser.parse0.func1()
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:58 +0x2a
+panic({0x533920, 0xc0000af1a0})
+	D:/1Project/1SDK/GoSDK/go1.17.2/src/runtime/panic.go:1038 +0x215
+GoRedis/resp/parser.readLine(0xc0000aac58, 0xc000049f10)
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:186 +0x257
+GoRedis/resp/parser.parse0({0x1075254e158, 0xc000104008}, 0x0)
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:68 +0x216
+created by GoRedis/resp/parser.ParseStream
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:48 +0x9d
+
+[INFO][server.go:49] 2022/08/23 23:00:41 shutting down
+[INFO][handler.go:110] 2022/08/23 23:00:41 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:01:06 start listen
+[INFO][server.go:49] 2022/08/23 23:01:08 shutting down
+[INFO][handler.go:110] 2022/08/23 23:01:08 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:01:11 start listen
+[INFO][server.go:66] 2022/08/23 23:01:14 accepted link
+[ERROR][parser.go:58] 2022/08/23 23:01:35 goroutine 7 [running]:
+runtime/debug.Stack()
+	D:/1Project/1SDK/GoSDK/go1.17.2/src/runtime/debug/stack.go:24 +0x65
+GoRedis/resp/parser.parse0.func1()
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:58 +0x2a
+panic({0xea3920, 0xc0000a20a8})
+	D:/1Project/1SDK/GoSDK/go1.17.2/src/runtime/panic.go:1038 +0x215
+GoRedis/resp/parser.readLine(0xc0000861b8, 0xc0000adf10)
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:186 +0x257
+GoRedis/resp/parser.parse0({0x284d776a158, 0xc000094008}, 0x0)
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:68 +0x216
+created by GoRedis/resp/parser.ParseStream
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:48 +0x9d
+
+[INFO][server.go:49] 2022/08/23 23:01:41 shutting down
+[INFO][handler.go:110] 2022/08/23 23:01:41 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:01:56 start listen
+[INFO][server.go:66] 2022/08/23 23:01:56 accepted link
+[INFO][handler.go:72] 2022/08/23 23:02:01 connection closed: 127.0.0.1:10912
+[INFO][server.go:66] 2022/08/23 23:02:02 accepted link
+[ERROR][handler.go:88] 2022/08/23 23:11:47 empty payload
+[ERROR][handler.go:94] 2022/08/23 23:11:47 require multi bulk reply
+[ERROR][handler.go:94] 2022/08/23 23:11:47 require multi bulk reply
+[ERROR][handler.go:94] 2022/08/23 23:11:47 require multi bulk reply
+[ERROR][handler.go:94] 2022/08/23 23:11:47 require multi bulk reply
+[INFO][server.go:49] 2022/08/23 23:11:54 shutting down
+[INFO][handler.go:110] 2022/08/23 23:11:54 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 23:11:54 connection closed: 127.0.0.1:10916
+[INFO][handler.go:110] 2022/08/23 23:11:54 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:11:58 start listen
+[INFO][server.go:66] 2022/08/23 23:11:59 accepted link
+[ERROR][handler.go:88] 2022/08/23 23:13:06 empty payload
+[ERROR][handler.go:88] 2022/08/23 23:13:06 empty payload
+[ERROR][handler.go:94] 2022/08/23 23:13:06 require multi bulk reply
+[ERROR][database.go:56] 2022/08/23 23:19:01 runtime error: index out of range [1] with length 1
+[ERROR][database.go:56] 2022/08/23 23:19:33 runtime error: index out of range [1] with length 1
+[ERROR][database.go:56] 2022/08/23 23:21:45 runtime error: index out of range [1] with length 1
+[INFO][server.go:49] 2022/08/23 23:22:05 shutting down
+[INFO][handler.go:110] 2022/08/23 23:22:05 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 23:22:05 connection closed: 127.0.0.1:11239
+[INFO][handler.go:110] 2022/08/23 23:22:05 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:22:25 start listen
+[INFO][server.go:66] 2022/08/23 23:22:25 accepted link
+[ERROR][database.go:56] 2022/08/23 23:22:31 runtime error: index out of range [1] with length 1
+[INFO][server.go:49] 2022/08/23 23:22:50 shutting down
+[INFO][handler.go:110] 2022/08/23 23:22:50 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 23:22:50 connection closed: 127.0.0.1:11593
+[INFO][handler.go:110] 2022/08/23 23:22:50 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:22:52 start listen
+[INFO][server.go:66] 2022/08/23 23:22:55 accepted link
+[ERROR][database.go:56] 2022/08/23 23:22:58 runtime error: index out of range [1] with length 1
+[INFO][server.go:49] 2022/08/23 23:23:20 shutting down
+[INFO][handler.go:110] 2022/08/23 23:23:20 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 23:23:20 connection closed: 127.0.0.1:11610
+[INFO][handler.go:110] 2022/08/23 23:23:20 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:23:21 start listen
+[INFO][server.go:66] 2022/08/23 23:23:25 accepted link
+[ERROR][database.go:56] 2022/08/23 23:23:27 runtime error: index out of range [1] with length 1
+[INFO][server.go:49] 2022/08/23 23:24:40 shutting down
+[INFO][handler.go:110] 2022/08/23 23:24:40 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 23:24:40 connection closed: 127.0.0.1:11636
+[INFO][handler.go:110] 2022/08/23 23:24:40 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:24:43 start listen
+[INFO][server.go:66] 2022/08/23 23:24:45 accepted link
+[INFO][handler.go:72] 2022/08/23 23:24:49 connection closed: 127.0.0.1:11673
+[INFO][server.go:66] 2022/08/23 23:24:50 accepted link
+[ERROR][database.go:56] 2022/08/23 23:25:24 runtime error: index out of range [1] with length 1
+[INFO][server.go:49] 2022/08/23 23:27:09 shutting down
+[INFO][handler.go:110] 2022/08/23 23:27:09 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 23:27:09 connection closed: 127.0.0.1:11676
+[INFO][handler.go:110] 2022/08/23 23:27:09 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:27:11 start listen
+[INFO][server.go:66] 2022/08/23 23:27:14 accepted link
+[INFO][server.go:49] 2022/08/23 23:27:23 shutting down
+[INFO][handler.go:110] 2022/08/23 23:27:23 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 23:27:23 connection closed: 127.0.0.1:11749
+[INFO][handler.go:110] 2022/08/23 23:27:23 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:27:27 start listen
+[INFO][server.go:66] 2022/08/23 23:27:28 accepted link
+[ERROR][database.go:56] 2022/08/23 23:27:58 runtime error: index out of range [1] with length 1
+[ERROR][database.go:56] 2022/08/23 23:28:08 runtime error: index out of range [1] with length 1
+[INFO][server.go:49] 2022/08/23 23:28:18 shutting down
+[INFO][handler.go:110] 2022/08/23 23:28:18 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 23:28:18 connection closed: 127.0.0.1:11759
+[INFO][handler.go:110] 2022/08/23 23:28:18 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:28:36 start listen
+[INFO][server.go:66] 2022/08/23 23:28:38 accepted link
+[ERROR][database.go:56] 2022/08/23 23:29:28 runtime error: index out of range [1] with length 1
+[ERROR][parser.go:58] 2022/08/23 23:42:32 goroutine 34 [running]:
+runtime/debug.Stack()
+	D:/1Project/1SDK/GoSDK/go1.17.2/src/runtime/debug/stack.go:24 +0x65
+GoRedis/resp/parser.parse0.func1()
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:58 +0x2a
+panic({0xf33920, 0xc00021c060})
+	D:/1Project/1SDK/GoSDK/go1.17.2/src/runtime/panic.go:1038 +0x215
+GoRedis/resp/parser.readLine(0xc00021a048, 0xc000215f10)
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:186 +0x257
+GoRedis/resp/parser.parse0({0x1f8eac50008, 0xc000094030}, 0x0)
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:68 +0x216
+created by GoRedis/resp/parser.ParseStream
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:48 +0x9d
+
+[INFO][server.go:49] 2022/08/23 23:42:36 shutting down
+[INFO][handler.go:110] 2022/08/23 23:42:36 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:42:55 start listen
+[INFO][server.go:66] 2022/08/23 23:42:56 accepted link
+[INFO][server.go:49] 2022/08/23 23:42:56 shutting down
+[INFO][handler.go:110] 2022/08/23 23:42:56 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 23:42:56 connection closed: 127.0.0.1:12449
+[INFO][handler.go:110] 2022/08/23 23:42:56 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:42:59 start listen
+[INFO][server.go:66] 2022/08/23 23:43:01 accepted link
+[ERROR][database.go:56] 2022/08/23 23:43:10 runtime error: index out of range [1] with length 1
+[INFO][server.go:49] 2022/08/23 23:43:16 shutting down
+[INFO][handler.go:110] 2022/08/23 23:43:16 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 23:43:16 connection closed: 127.0.0.1:12454
+[INFO][handler.go:110] 2022/08/23 23:43:16 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:43:27 start listen
+[INFO][server.go:66] 2022/08/23 23:43:27 accepted link
+[INFO][server.go:39] 2022/08/23 23:45:35 start listen
+[INFO][server.go:66] 2022/08/23 23:45:52 accepted link
+[ERROR][database.go:56] 2022/08/23 23:45:53 runtime error: index out of range [1] with length 1
+[ERROR][database.go:56] 2022/08/23 23:45:56 runtime error: index out of range [1] with length 1
+[INFO][server.go:49] 2022/08/23 23:46:06 shutting down
+[INFO][handler.go:110] 2022/08/23 23:46:06 handler shutting down...
+[INFO][handler.go:72] 2022/08/23 23:46:06 connection closed: 127.0.0.1:12552
+[INFO][handler.go:110] 2022/08/23 23:46:06 handler shutting down...
+[INFO][server.go:39] 2022/08/23 23:46:59 start listen
+[INFO][server.go:66] 2022/08/23 23:47:03 accepted link
+[INFO][server.go:39] 2022/08/23 23:47:53 start listen
+[INFO][server.go:66] 2022/08/24 00:01:33 accepted link
+[INFO][server.go:49] 2022/08/24 00:01:40 shutting down
+[INFO][handler.go:110] 2022/08/24 00:01:40 handler shutting down...
+[INFO][handler.go:72] 2022/08/24 00:01:40 connection closed: 127.0.0.1:14262
+[INFO][handler.go:110] 2022/08/24 00:01:40 handler shutting down...

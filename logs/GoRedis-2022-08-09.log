@@ -1,0 +1,8 @@
+[INFO][server.go:39] 2022/08/09 23:26:40 start listen
+[INFO][server.go:66] 2022/08/09 23:26:51 accepted link
+[ERROR][handler.go:94] 2022/08/09 23:27:35 require multi bulk reply
+[ERROR][handler.go:94] 2022/08/09 23:27:35 require multi bulk reply
+[INFO][handler.go:72] 2022/08/09 23:28:04 connection closed: 127.0.0.1:11141
+[INFO][server.go:49] 2022/08/09 23:28:07 shutting down
+[INFO][handler.go:110] 2022/08/09 23:28:07 handler shutting down...
+[INFO][handler.go:110] 2022/08/09 23:28:07 handler shutting down...

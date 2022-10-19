@@ -1,0 +1,27 @@
+[INFO][server.go:39] 2022/08/13 09:36:21 start listen
+[INFO][server.go:66] 2022/08/13 09:36:54 accepted link
+[INFO][server.go:49] 2022/08/13 09:38:58 shutting down
+[INFO][handler.go:118] 2022/08/13 09:38:58 handler shutting down...
+[INFO][handler.go:80] 2022/08/13 09:38:58 connection closed: 127.0.0.1:3949
+[INFO][handler.go:118] 2022/08/13 09:38:58 handler shutting down...
+[ERROR][aof.go:97] 2022/08/13 09:41:36 open appendonly.aof: The system cannot find the file specified.
+[INFO][server.go:39] 2022/08/13 09:41:36 start listen
+[INFO][server.go:66] 2022/08/13 09:41:50 accepted link
+[ERROR][parser.go:58] 2022/08/13 09:42:01 goroutine 18 [running]:
+runtime/debug.Stack()
+	D:/1Project/1SDK/GoSDK/go1.17.2/src/runtime/debug/stack.go:24 +0x65
+GoRedis/resp/parser.parse0.func1()
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:58 +0x2a
+panic({0x265c60, 0xc000206018})
+	D:/1Project/1SDK/GoSDK/go1.17.2/src/runtime/panic.go:1038 +0x215
+GoRedis/resp/parser.readLine(0xc000202010, 0xc000127f10)
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:186 +0x257
+GoRedis/resp/parser.parse0({0x2c96fd44008, 0xc000006048}, 0x0)
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:68 +0x216
+created by GoRedis/resp/parser.ParseStream
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:48 +0x9d
+
+[INFO][server.go:66] 2022/08/13 09:43:02 accepted link
+[INFO][server.go:49] 2022/08/13 09:44:44 shutting down
+[INFO][handler.go:118] 2022/08/13 09:44:44 handler shutting down...
+[INFO][handler.go:80] 2022/08/13 09:44:44 connection closed: 127.0.0.1:4147

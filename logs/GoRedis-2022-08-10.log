@@ -1,0 +1,47 @@
+[INFO][server.go:39] 2022/08/10 16:26:44 start listen
+[INFO][server.go:66] 2022/08/10 16:27:01 accepted link
+[ERROR][handler.go:94] 2022/08/10 16:27:39 require multi bulk reply
+[INFO][server.go:49] 2022/08/10 16:29:21 shutting down
+[INFO][handler.go:110] 2022/08/10 16:29:21 handler shutting down...
+[INFO][handler.go:72] 2022/08/10 16:29:21 connection closed: 127.0.0.1:9823
+[INFO][handler.go:110] 2022/08/10 16:29:21 handler shutting down...
+[INFO][server.go:39] 2022/08/10 16:29:52 start listen
+[INFO][server.go:66] 2022/08/10 16:29:52 accepted link
+[INFO][server.go:66] 2022/08/10 16:31:18 accepted link
+[ERROR][parser.go:58] 2022/08/10 16:31:21 goroutine 34 [running]:
+runtime/debug.Stack()
+	D:/1Project/1SDK/GoSDK/go1.17.2/src/runtime/debug/stack.go:24 +0x65
+GoRedis/resp/parser.parse0.func1()
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:58 +0x2a
+panic({0x9602e0, 0xc00009e030})
+	D:/1Project/1SDK/GoSDK/go1.17.2/src/runtime/panic.go:1038 +0x215
+GoRedis/resp/parser.readLine(0xc00009601c, 0xc000213f10)
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:186 +0x257
+GoRedis/resp/parser.parse0({0x1afdeb04008, 0xc00008c008}, 0x0)
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:68 +0x216
+created by GoRedis/resp/parser.ParseStream
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:48 +0x9d
+
+[INFO][server.go:49] 2022/08/10 16:32:14 shutting down
+[INFO][handler.go:110] 2022/08/10 16:32:14 handler shutting down...
+[INFO][handler.go:72] 2022/08/10 16:32:14 connection closed: 127.0.0.1:9906
+[INFO][server.go:39] 2022/08/10 16:32:27 start listen
+[INFO][server.go:66] 2022/08/10 16:32:29 accepted link
+[INFO][server.go:49] 2022/08/10 16:32:30 shutting down
+[INFO][handler.go:110] 2022/08/10 16:32:30 handler shutting down...
+[INFO][handler.go:72] 2022/08/10 16:32:30 connection closed: 127.0.0.1:9980
+[INFO][handler.go:110] 2022/08/10 16:32:30 handler shutting down...
+[INFO][server.go:39] 2022/08/10 16:32:35 start listen
+[INFO][server.go:66] 2022/08/10 16:32:35 accepted link
+[INFO][server.go:66] 2022/08/10 16:32:41 accepted link
+[INFO][server.go:49] 2022/08/10 16:32:52 shutting down
+[INFO][handler.go:110] 2022/08/10 16:32:52 handler shutting down...
+[INFO][handler.go:72] 2022/08/10 16:32:52 connection closed: 127.0.0.1:9984
+[INFO][handler.go:72] 2022/08/10 16:32:52 connection closed: 127.0.0.1:9990
+[INFO][handler.go:110] 2022/08/10 16:32:52 handler shutting down...
+[INFO][server.go:39] 2022/08/10 16:56:06 start listen
+[INFO][server.go:66] 2022/08/10 16:56:14 accepted link
+[INFO][server.go:49] 2022/08/10 16:56:37 shutting down
+[INFO][handler.go:110] 2022/08/10 16:56:37 handler shutting down...
+[INFO][handler.go:72] 2022/08/10 16:56:37 connection closed: 127.0.0.1:11990
+[INFO][handler.go:110] 2022/08/10 16:56:37 handler shutting down...

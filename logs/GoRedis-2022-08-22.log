@@ -1,0 +1,262 @@
+[INFO][server.go:39] 2022/08/22 01:11:12 start listen
+[INFO][server.go:66] 2022/08/22 01:11:28 accepted link
+[ERROR][handler.go:102] 2022/08/22 01:12:43 require multi bulk reply
+[ERROR][handler.go:102] 2022/08/22 01:12:56 require multi bulk reply
+[INFO][server.go:66] 2022/08/22 01:16:21 accepted link
+[INFO][server.go:49] 2022/08/22 01:19:47 shutting down
+[INFO][handler.go:118] 2022/08/22 01:19:47 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 01:19:47 connection closed: 127.0.0.1:8431
+[INFO][handler.go:80] 2022/08/22 01:19:47 connection closed: 127.0.0.1:8678
+[INFO][handler.go:118] 2022/08/22 01:19:47 handler shutting down...
+[INFO][server.go:39] 2022/08/22 01:19:48 start listen
+[INFO][server.go:66] 2022/08/22 01:19:52 accepted link
+[INFO][server.go:66] 2022/08/22 01:19:52 accepted link
+[INFO][server.go:66] 2022/08/22 01:20:00 accepted link
+[INFO][server.go:49] 2022/08/22 01:23:58 shutting down
+[INFO][handler.go:118] 2022/08/22 01:23:58 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 01:23:58 connection closed: 127.0.0.1:8786
+[INFO][handler.go:80] 2022/08/22 01:23:58 connection closed: 127.0.0.1:8787
+[INFO][handler.go:80] 2022/08/22 01:23:58 connection closed: 127.0.0.1:8793
+[INFO][handler.go:118] 2022/08/22 01:23:58 handler shutting down...
+[INFO][server.go:39] 2022/08/22 01:40:47 start listen
+[INFO][server.go:66] 2022/08/22 01:40:56 accepted link
+[INFO][server.go:49] 2022/08/22 01:41:42 shutting down
+[INFO][handler.go:118] 2022/08/22 01:41:42 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 01:41:42 connection closed: 127.0.0.1:9429
+[INFO][handler.go:118] 2022/08/22 01:41:42 handler shutting down...
+[INFO][server.go:39] 2022/08/22 01:41:44 start listen
+[INFO][server.go:66] 2022/08/22 01:41:47 accepted link
+[INFO][handler.go:80] 2022/08/22 01:41:57 connection closed: 127.0.0.1:9458
+[INFO][server.go:66] 2022/08/22 01:41:57 accepted link
+[INFO][server.go:49] 2022/08/22 01:43:51 shutting down
+[INFO][handler.go:118] 2022/08/22 01:43:51 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 01:43:51 connection closed: 127.0.0.1:9464
+[INFO][handler.go:118] 2022/08/22 01:43:51 handler shutting down...
+[INFO][server.go:39] 2022/08/22 01:43:53 start listen
+[INFO][server.go:66] 2022/08/22 01:43:56 accepted link
+[INFO][server.go:49] 2022/08/22 01:45:25 shutting down
+[INFO][handler.go:118] 2022/08/22 01:45:25 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 01:45:25 connection closed: 127.0.0.1:9534
+[INFO][handler.go:118] 2022/08/22 01:45:25 handler shutting down...
+[INFO][server.go:39] 2022/08/22 01:45:26 start listen
+[INFO][server.go:66] 2022/08/22 01:45:30 accepted link
+[INFO][handler.go:80] 2022/08/22 01:45:32 connection closed: 127.0.0.1:9585
+[INFO][server.go:66] 2022/08/22 01:45:33 accepted link
+[INFO][server.go:49] 2022/08/22 01:46:07 shutting down
+[INFO][handler.go:118] 2022/08/22 01:46:07 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 01:46:07 connection closed: 127.0.0.1:9588
+[INFO][handler.go:118] 2022/08/22 01:46:07 handler shutting down...
+[INFO][server.go:39] 2022/08/22 01:48:52 start listen
+[INFO][server.go:66] 2022/08/22 01:49:06 accepted link
+[INFO][server.go:49] 2022/08/22 01:49:57 shutting down
+[INFO][handler.go:118] 2022/08/22 01:49:57 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 01:49:57 connection closed: 127.0.0.1:9691
+[INFO][handler.go:118] 2022/08/22 01:49:57 handler shutting down...
+[INFO][server.go:39] 2022/08/22 01:50:00 start listen
+[INFO][server.go:66] 2022/08/22 01:50:02 accepted link
+[INFO][server.go:49] 2022/08/22 01:50:57 shutting down
+[INFO][handler.go:118] 2022/08/22 01:50:57 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 01:50:57 connection closed: 127.0.0.1:9726
+[INFO][handler.go:118] 2022/08/22 01:50:57 handler shutting down...
+[INFO][server.go:39] 2022/08/22 01:50:58 start listen
+[INFO][server.go:66] 2022/08/22 01:51:02 accepted link
+[INFO][server.go:49] 2022/08/22 01:53:27 shutting down
+[INFO][handler.go:118] 2022/08/22 01:53:27 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 01:53:27 connection closed: 127.0.0.1:9755
+[INFO][handler.go:118] 2022/08/22 01:53:27 handler shutting down...
+[INFO][server.go:39] 2022/08/22 01:53:29 start listen
+[INFO][server.go:66] 2022/08/22 01:53:32 accepted link
+[INFO][handler.go:80] 2022/08/22 02:00:00 connection closed: 127.0.0.1:9841
+[INFO][server.go:49] 2022/08/22 02:00:12 shutting down
+[INFO][handler.go:118] 2022/08/22 02:00:12 handler shutting down...
+[INFO][server.go:39] 2022/08/22 02:04:10 start listen
+[INFO][server.go:66] 2022/08/22 02:04:34 accepted link
+[INFO][server.go:49] 2022/08/22 02:04:38 shutting down
+[INFO][handler.go:118] 2022/08/22 02:04:38 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 02:04:38 connection closed: 127.0.0.1:10206
+[INFO][handler.go:118] 2022/08/22 02:04:38 handler shutting down...
+[INFO][server.go:39] 2022/08/22 02:07:49 start listen
+[INFO][server.go:66] 2022/08/22 02:08:19 accepted link
+[INFO][server.go:66] 2022/08/22 02:08:19 accepted link
+[INFO][server.go:66] 2022/08/22 02:08:19 accepted link
+[INFO][server.go:66] 2022/08/22 02:08:19 accepted link
+[INFO][server.go:66] 2022/08/22 02:08:19 accepted link
+[INFO][server.go:66] 2022/08/22 02:08:19 accepted link
+[INFO][server.go:66] 2022/08/22 02:08:19 accepted link
+[INFO][server.go:66] 2022/08/22 02:08:19 accepted link
+[INFO][server.go:66] 2022/08/22 02:08:39 accepted link
+[INFO][handler.go:89] 2022/08/22 02:11:53 connection closed: 127.0.0.1:10340
+[INFO][handler.go:89] 2022/08/22 02:11:53 connection closed: 127.0.0.1:10338
+[INFO][handler.go:89] 2022/08/22 02:11:53 connection closed: 127.0.0.1:10334
+[INFO][handler.go:89] 2022/08/22 02:11:53 connection closed: 127.0.0.1:10336
+[INFO][handler.go:89] 2022/08/22 02:11:53 connection closed: 127.0.0.1:10342
+[ERROR][client.go:96] 2022/08/22 02:11:55 dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:96] 2022/08/22 02:11:55 dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:96] 2022/08/22 02:11:55 dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[INFO][handler.go:89] 2022/08/22 02:11:56 connection closed: 127.0.0.1:10344
+[INFO][handler.go:89] 2022/08/22 02:11:56 connection closed: 127.0.0.1:10330
+[INFO][handler.go:89] 2022/08/22 02:11:56 connection closed: 127.0.0.1:10332
+[ERROR][client.go:96] 2022/08/22 02:11:57 dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:96] 2022/08/22 02:11:57 dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:96] 2022/08/22 02:11:57 dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[INFO][server.go:49] 2022/08/22 02:11:57 shutting down
+[INFO][handler.go:118] 2022/08/22 02:11:57 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 02:11:57 connection closed: 127.0.0.1:10353
+[INFO][handler.go:118] 2022/08/22 02:11:57 handler shutting down...
+[INFO][server.go:39] 2022/08/22 02:12:00 start listen
+[INFO][server.go:66] 2022/08/22 02:12:02 accepted link
+[INFO][server.go:49] 2022/08/22 02:12:53 shutting down
+[INFO][handler.go:118] 2022/08/22 02:12:53 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 02:12:53 connection closed: 127.0.0.1:10471
+[INFO][handler.go:118] 2022/08/22 02:12:53 handler shutting down...
+[ERROR][aof.go:97] 2022/08/22 02:13:14 open appendonly.aof: The system cannot find the file specified.
+[INFO][server.go:39] 2022/08/22 02:13:14 start listen
+[INFO][server.go:66] 2022/08/22 02:13:14 accepted link
+[INFO][server.go:66] 2022/08/22 02:14:12 accepted link
+[INFO][server.go:66] 2022/08/22 02:14:12 accepted link
+[INFO][server.go:66] 2022/08/22 02:14:12 accepted link
+[INFO][server.go:66] 2022/08/22 02:14:12 accepted link
+[INFO][server.go:66] 2022/08/22 02:14:12 accepted link
+[INFO][server.go:66] 2022/08/22 02:14:12 accepted link
+[INFO][server.go:66] 2022/08/22 02:14:12 accepted link
+[INFO][server.go:66] 2022/08/22 02:14:12 accepted link
+[INFO][handler.go:89] 2022/08/22 02:14:27 connection closed: 127.0.0.1:10541
+[INFO][handler.go:89] 2022/08/22 02:14:27 connection closed: 127.0.0.1:10551
+[INFO][handler.go:89] 2022/08/22 02:14:27 connection closed: 127.0.0.1:10549
+[INFO][handler.go:89] 2022/08/22 02:14:27 connection closed: 127.0.0.1:10547
+[INFO][handler.go:89] 2022/08/22 02:14:27 connection closed: 127.0.0.1:10545
+[INFO][handler.go:89] 2022/08/22 02:14:27 connection closed: 127.0.0.1:10543
+[INFO][handler.go:89] 2022/08/22 02:14:27 connection closed: 127.0.0.1:10555
+[INFO][handler.go:89] 2022/08/22 02:14:27 connection closed: 127.0.0.1:10553
+[ERROR][client.go:96] 2022/08/22 02:14:34 dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[INFO][server.go:49] 2022/08/22 02:14:35 shutting down
+[INFO][handler.go:118] 2022/08/22 02:14:35 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 02:14:35 connection closed: 127.0.0.1:10510
+[INFO][handler.go:118] 2022/08/22 02:14:35 handler shutting down...
+[ERROR][aof.go:97] 2022/08/22 02:23:17 open appendonly.aof: The system cannot find the file specified.
+[INFO][server.go:39] 2022/08/22 02:23:17 start listen
+[INFO][server.go:66] 2022/08/22 02:23:29 accepted link
+[ERROR][handler.go:96] 2022/08/22 02:23:56 empty payload
+[ERROR][handler.go:102] 2022/08/22 02:23:56 require multi bulk reply
+[ERROR][handler.go:102] 2022/08/22 02:23:56 require multi bulk reply
+[ERROR][handler.go:102] 2022/08/22 02:23:56 require multi bulk reply
+[INFO][handler.go:80] 2022/08/22 02:26:26 connection closed: 127.0.0.1:10841
+[INFO][server.go:66] 2022/08/22 02:26:35 accepted link
+[INFO][server.go:66] 2022/08/22 02:26:44 accepted link
+[INFO][server.go:66] 2022/08/22 02:26:44 accepted link
+[INFO][server.go:66] 2022/08/22 02:26:44 accepted link
+[INFO][server.go:66] 2022/08/22 02:26:44 accepted link
+[INFO][server.go:66] 2022/08/22 02:26:44 accepted link
+[INFO][server.go:66] 2022/08/22 02:26:44 accepted link
+[INFO][server.go:66] 2022/08/22 02:26:44 accepted link
+[INFO][server.go:49] 2022/08/22 02:27:23 shutting down
+[INFO][handler.go:118] 2022/08/22 02:27:23 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 02:27:23 connection closed: 127.0.0.1:10938
+[INFO][handler.go:80] 2022/08/22 02:27:23 connection closed: 127.0.0.1:10940
+[INFO][handler.go:80] 2022/08/22 02:27:23 connection closed: 127.0.0.1:10944
+[INFO][handler.go:80] 2022/08/22 02:27:23 connection closed: 127.0.0.1:10948
+[INFO][handler.go:80] 2022/08/22 02:27:23 connection closed: 127.0.0.1:10950
+[INFO][handler.go:80] 2022/08/22 02:27:23 connection closed: 127.0.0.1:10932
+[INFO][handler.go:80] 2022/08/22 02:27:23 connection closed: 127.0.0.1:10942
+[INFO][handler.go:80] 2022/08/22 02:27:23 connection closed: 127.0.0.1:10946
+[INFO][handler.go:118] 2022/08/22 02:27:23 handler shutting down...
+[INFO][server.go:39] 2022/08/22 02:32:04 start listen
+[INFO][server.go:66] 2022/08/22 02:32:37 accepted link
+[INFO][server.go:49] 2022/08/22 02:34:16 shutting down
+[INFO][handler.go:118] 2022/08/22 02:34:16 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 02:34:16 connection closed: 127.0.0.1:11150
+[INFO][handler.go:118] 2022/08/22 02:34:16 handler shutting down...
+[INFO][server.go:39] 2022/08/22 13:27:27 start listen
+[INFO][server.go:49] 2022/08/22 13:27:29 shutting down
+[INFO][handler.go:118] 2022/08/22 13:27:29 handler shutting down...
+[INFO][server.go:39] 2022/08/22 13:27:37 start listen
+[INFO][server.go:66] 2022/08/22 13:28:44 accepted link
+[INFO][handler.go:80] 2022/08/22 13:30:25 connection closed: 127.0.0.1:12568
+[INFO][server.go:66] 2022/08/22 13:30:52 accepted link
+[INFO][handler.go:89] 2022/08/22 13:34:25 connection closed: 127.0.0.1:12620
+[ERROR][main.go:47] 2022/08/22 13:34:29 listen tcp 0.0.0.0:63791: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+[INFO][server.go:66] 2022/08/22 13:34:56 accepted link
+[INFO][handler.go:89] 2022/08/22 13:40:57 connection closed: 127.0.0.1:12768
+[INFO][server.go:49] 2022/08/22 14:08:25 shutting down
+[INFO][handler.go:118] 2022/08/22 14:08:25 handler shutting down...
+[INFO][server.go:39] 2022/08/22 14:09:10 start listen
+[INFO][server.go:66] 2022/08/22 14:09:32 accepted link
+[INFO][server.go:49] 2022/08/22 14:23:55 shutting down
+[INFO][handler.go:118] 2022/08/22 14:23:55 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 14:23:55 connection closed: 127.0.0.1:13738
+[INFO][handler.go:118] 2022/08/22 14:23:55 handler shutting down...
+[ERROR][aof.go:97] 2022/08/22 14:31:11 open appendonly.aof: The system cannot find the file specified.
+[INFO][server.go:39] 2022/08/22 14:31:11 start listen
+[INFO][server.go:66] 2022/08/22 14:35:20 accepted link
+[INFO][handler.go:80] 2022/08/22 14:35:35 connection closed: 127.0.0.1:4360
+[INFO][server.go:66] 2022/08/22 14:35:40 accepted link
+[INFO][server.go:49] 2022/08/22 14:39:09 shutting down
+[INFO][handler.go:118] 2022/08/22 14:39:09 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 14:39:09 connection closed: 127.0.0.1:4373
+[INFO][handler.go:118] 2022/08/22 14:39:09 handler shutting down...
+[INFO][server.go:39] 2022/08/22 14:44:23 start listen
+[INFO][server.go:66] 2022/08/22 14:44:36 accepted link
+[INFO][server.go:49] 2022/08/22 14:45:10 shutting down
+[INFO][handler.go:118] 2022/08/22 14:45:10 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 14:45:10 connection closed: 127.0.0.1:4622
+[INFO][handler.go:118] 2022/08/22 14:45:10 handler shutting down...
+[INFO][server.go:39] 2022/08/22 14:45:19 start listen
+[INFO][server.go:66] 2022/08/22 14:45:20 accepted link
+[INFO][server.go:66] 2022/08/22 14:46:12 accepted link
+[INFO][server.go:66] 2022/08/22 14:46:12 accepted link
+[INFO][server.go:66] 2022/08/22 14:46:12 accepted link
+[INFO][server.go:66] 2022/08/22 14:46:12 accepted link
+[INFO][server.go:66] 2022/08/22 14:46:12 accepted link
+[INFO][server.go:66] 2022/08/22 14:46:12 accepted link
+[INFO][server.go:66] 2022/08/22 14:46:12 accepted link
+[INFO][server.go:66] 2022/08/22 14:46:12 accepted link
+[INFO][client.go:91] 2022/08/22 14:46:36 reconnect with: 127.0.0.1:63792
+[INFO][client.go:91] 2022/08/22 14:46:36 reconnect with: 127.0.0.1:63792
+[INFO][client.go:91] 2022/08/22 14:46:36 reconnect with: 127.0.0.1:63792
+[INFO][client.go:91] 2022/08/22 14:46:36 reconnect with: 127.0.0.1:63792
+[INFO][client.go:91] 2022/08/22 14:46:36 reconnect with: 127.0.0.1:63792
+[INFO][client.go:91] 2022/08/22 14:46:36 reconnect with: 127.0.0.1:63792
+[INFO][client.go:91] 2022/08/22 14:46:36 reconnect with: 127.0.0.1:63792
+[INFO][client.go:91] 2022/08/22 14:46:36 reconnect with: 127.0.0.1:63792
+[INFO][handler.go:89] 2022/08/22 14:46:36 connection closed: 127.0.0.1:4686
+[INFO][handler.go:89] 2022/08/22 14:46:36 connection closed: 127.0.0.1:4684
+[INFO][handler.go:89] 2022/08/22 14:46:36 connection closed: 127.0.0.1:4698
+[INFO][handler.go:89] 2022/08/22 14:46:36 connection closed: 127.0.0.1:4696
+[INFO][handler.go:89] 2022/08/22 14:46:36 connection closed: 127.0.0.1:4694
+[INFO][handler.go:89] 2022/08/22 14:46:36 connection closed: 127.0.0.1:4692
+[INFO][handler.go:89] 2022/08/22 14:46:36 connection closed: 127.0.0.1:4690
+[INFO][handler.go:89] 2022/08/22 14:46:36 connection closed: 127.0.0.1:4688
+[ERROR][client.go:99] 2022/08/22 14:46:38 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:38 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:38 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:38 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:38 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:38 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:38 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:38 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:41 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:41 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:41 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:41 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:41 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:41 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:41 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[ERROR][client.go:99] 2022/08/22 14:46:41 reconnect error: dial tcp 127.0.0.1:63792: connectex: No connection could be made because the target machine actively refused it.
+[INFO][server.go:49] 2022/08/22 14:46:43 shutting down
+[INFO][handler.go:118] 2022/08/22 14:46:43 handler shutting down...
+[INFO][handler.go:80] 2022/08/22 14:46:43 connection closed: 127.0.0.1:4641
+[INFO][handler.go:118] 2022/08/22 14:46:43 handler shutting down...
+[INFO][server.go:39] 2022/08/22 14:49:16 start listen
+[INFO][server.go:66] 2022/08/22 14:49:34 accepted link
+[INFO][server.go:49] 2022/08/22 14:51:51 shutting down
+[INFO][handler.go:110] 2022/08/22 14:51:51 handler shutting down...
+[INFO][handler.go:72] 2022/08/22 14:51:51 connection closed: 127.0.0.1:4819
+[INFO][handler.go:110] 2022/08/22 14:51:51 handler shutting down...
+[INFO][server.go:39] 2022/08/22 15:04:25 start listen
+[INFO][server.go:66] 2022/08/22 15:04:39 accepted link
+[ERROR][handler.go:88] 2022/08/22 15:09:39 empty payload
+[ERROR][handler.go:88] 2022/08/22 15:09:39 empty payload
+[ERROR][handler.go:94] 2022/08/22 15:09:39 require multi bulk reply
+[INFO][handler.go:72] 2022/08/22 15:12:11 connection closed: 127.0.0.1:4903
+[INFO][server.go:49] 2022/08/22 15:12:13 shutting down
+[INFO][handler.go:110] 2022/08/22 15:12:13 handler shutting down...

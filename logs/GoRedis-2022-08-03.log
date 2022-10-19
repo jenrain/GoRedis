@@ -1,0 +1,12 @@
+[INFO][server.go:39] 2022/08/03 15:18:09 start listen
+[INFO][server.go:51] 2022/08/03 15:18:17 shutting down
+[INFO][echo.go:77] 2022/08/03 15:18:17 handler shutting down
+[INFO][server.go:39] 2022/08/03 15:18:26 start listen
+[INFO][server.go:51] 2022/08/03 15:18:33 shutting down
+[INFO][echo.go:77] 2022/08/03 15:18:33 handler shutting down
+[INFO][server.go:39] 2022/08/03 15:18:44 start listen
+[INFO][server.go:68] 2022/08/03 15:22:36 accepted link
+[INFO][server.go:51] 2022/08/03 15:23:41 shutting down
+[INFO][echo.go:77] 2022/08/03 15:23:41 handler shutting down
+[WARN][echo.go:63] 2022/08/03 15:23:41 read tcp 127.0.0.1:63791->127.0.0.1:7699: use of closed network connection
+[INFO][echo.go:77] 2022/08/03 15:23:41 handler shutting down
