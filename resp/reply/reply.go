@@ -55,6 +55,27 @@ func MakeMultiBulkReply(arg [][]byte) *MultiBulkReply {
 	return &MultiBulkReply{Args: arg}
 }
 
+// MultiRawReply 多条回复，比如事务执行完毕的回复
+type MultiRawReply struct {
+	Replies []resp.Reply
+}
+
+func MakeMultiRawReply(replies []resp.Reply) *MultiRawReply {
+	return &MultiRawReply{
+		Replies: replies,
+	}
+}
+
+func (r *MultiRawReply) ToBytes() []byte {
+	argLen := len(r.Replies)
+	var buf bytes.Buffer
+	buf.WriteString("*" + strconv.Itoa(argLen) + CRLF)
+	for _, arg := range r.Replies {
+		buf.Write(arg.ToBytes())
+	}
+	return buf.Bytes()
+}
+
 // StatusReply 回复一个状态
 type StatusReply struct {
 	Status string
@@ -117,4 +138,19 @@ func MakeErrReply(status string) *StandardErrReply {
 func IsErrorReply(reply resp.Reply) bool {
 	// 判断字节数组的第一个元素是不是减号
 	return reply.ToBytes()[0] == '-'
+}
+
+// QueuedReply 执行事务时，命令的入队回复
+type QueuedReply struct{}
+
+var queuedBytes = []byte("+QUEUED\r\n")
+
+func (r *QueuedReply) ToBytes() []byte {
+	return queuedBytes
+}
+
+var theQueuedReply = new(QueuedReply)
+
+func MakeQueuedReply() *QueuedReply {
+	return theQueuedReply
 }

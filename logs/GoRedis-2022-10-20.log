@@ -1,0 +1,124 @@
+[INFO][server.go:40] 2022/10/20 16:29:22 start listen
+[INFO][server.go:50] 2022/10/20 16:29:26 shutting down
+[INFO][handler.go:112] 2022/10/20 16:29:26 handler shutting down...
+[INFO][server.go:40] 2022/10/20 16:29:34 start listen
+[INFO][server.go:67] 2022/10/20 16:30:06 accepted link
+[INFO][server.go:67] 2022/10/20 16:37:01 accepted link
+[ERROR][handler.go:90] 2022/10/20 16:42:32 empty payload
+[ERROR][handler.go:96] 2022/10/20 16:42:32 require multi bulk reply
+[ERROR][parser.go:58] 2022/10/20 16:46:51 goroutine 5 [running]:
+runtime/debug.Stack()
+	D:/1Project/1SDK/GoSDK/go1.17.2/src/runtime/debug/stack.go:24 +0x83
+GoRedis/resp/parser.parse0.func1()
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:58 +0x32
+panic({0x997a00, 0x11816490})
+	D:/1Project/1SDK/GoSDK/go1.17.2/src/runtime/panic.go:1038 +0x1bc
+GoRedis/resp/parser.readLine(0x1183e030, 0x1183bf8c)
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:187 +0x2f7
+GoRedis/resp/parser.parse0({0x12d0008, 0x118882e8}, 0x11814380)
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:69 +0x17f
+created by GoRedis/resp/parser.ParseStream
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:48 +0x5d
+
+[INFO][server.go:50] 2022/10/20 16:49:55 shutting down
+[INFO][handler.go:112] 2022/10/20 16:49:55 handler shutting down...
+[INFO][handler.go:73] 2022/10/20 16:49:55 connection closed: 127.0.0.1:14268
+[INFO][server.go:40] 2022/10/20 16:50:00 start listen
+[INFO][server.go:67] 2022/10/20 16:50:00 accepted link
+[INFO][server.go:50] 2022/10/20 16:50:01 shutting down
+[INFO][handler.go:112] 2022/10/20 16:50:01 handler shutting down...
+[INFO][handler.go:73] 2022/10/20 16:50:01 connection closed: 127.0.0.1:14769
+[INFO][handler.go:112] 2022/10/20 16:50:01 handler shutting down...
+[INFO][server.go:40] 2022/10/20 16:50:08 start listen
+[INFO][server.go:67] 2022/10/20 16:50:10 accepted link
+[INFO][server.go:67] 2022/10/20 16:50:13 accepted link
+[ERROR][handler.go:90] 2022/10/20 16:52:03 empty payload
+[ERROR][handler.go:96] 2022/10/20 16:52:03 require multi bulk reply
+[ERROR][handler.go:90] 2022/10/20 17:05:37 empty payload
+[ERROR][handler.go:96] 2022/10/20 17:05:37 require multi bulk reply
+[ERROR][handler.go:96] 2022/10/20 17:05:37 require multi bulk reply
+[INFO][server.go:50] 2022/10/20 17:12:30 shutting down
+[INFO][handler.go:112] 2022/10/20 17:12:30 handler shutting down...
+[INFO][handler.go:73] 2022/10/20 17:12:30 connection closed: 127.0.0.1:14780
+[INFO][handler.go:73] 2022/10/20 17:12:30 connection closed: 127.0.0.1:14786
+[INFO][handler.go:112] 2022/10/20 17:12:30 handler shutting down...
+[INFO][server.go:40] 2022/10/20 17:13:10 start listen
+[INFO][server.go:67] 2022/10/20 17:13:10 accepted link
+[INFO][server.go:67] 2022/10/20 17:13:10 accepted link
+[INFO][server.go:50] 2022/10/20 17:13:12 shutting down
+[INFO][handler.go:112] 2022/10/20 17:13:12 handler shutting down...
+[INFO][handler.go:73] 2022/10/20 17:13:12 connection closed: 127.0.0.1:2221
+[INFO][handler.go:73] 2022/10/20 17:13:12 connection closed: 127.0.0.1:2220
+[INFO][handler.go:112] 2022/10/20 17:13:12 handler shutting down...
+[INFO][server.go:40] 2022/10/20 17:13:17 start listen
+[INFO][server.go:67] 2022/10/20 17:13:17 accepted link
+[INFO][server.go:67] 2022/10/20 17:13:17 accepted link
+[ERROR][handler.go:90] 2022/10/20 17:16:56 empty payload
+[ERROR][handler.go:90] 2022/10/20 17:16:56 empty payload
+[ERROR][handler.go:96] 2022/10/20 17:16:56 require multi bulk reply
+[ERROR][parser.go:58] 2022/10/20 17:17:56 goroutine 18 [running]:
+runtime/debug.Stack()
+	D:/1Project/1SDK/GoSDK/go1.17.2/src/runtime/debug/stack.go:24 +0x83
+GoRedis/resp/parser.parse0.func1()
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:58 +0x32
+panic({0x8d7a00, 0x115826f0})
+	D:/1Project/1SDK/GoSDK/go1.17.2/src/runtime/panic.go:1038 +0x1bc
+GoRedis/resp/parser.readLine(0x11498000, 0x11435f8c)
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:187 +0x2f7
+GoRedis/resp/parser.parse0({0x11350008, 0x114062f8}, 0x1148e000)
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:69 +0x17f
+created by GoRedis/resp/parser.ParseStream
+	D:/1Project/GoProject/GoRedis/resp/parser/parser.go:48 +0x5d
+
+[INFO][server.go:50] 2022/10/20 17:18:13 shutting down
+[INFO][handler.go:112] 2022/10/20 17:18:13 handler shutting down...
+[INFO][handler.go:73] 2022/10/20 17:18:13 connection closed: 127.0.0.1:2225
+[INFO][server.go:40] 2022/10/20 17:18:22 start listen
+[INFO][server.go:67] 2022/10/20 17:18:24 accepted link
+[INFO][server.go:67] 2022/10/20 17:18:24 accepted link
+[ERROR][handler.go:90] 2022/10/20 17:19:16 empty payload
+[ERROR][handler.go:90] 2022/10/20 17:19:16 empty payload
+[ERROR][handler.go:96] 2022/10/20 17:19:16 require multi bulk reply
+[INFO][server.go:50] 2022/10/20 17:27:28 shutting down
+[INFO][handler.go:112] 2022/10/20 17:27:28 handler shutting down...
+[INFO][handler.go:73] 2022/10/20 17:27:28 connection closed: 127.0.0.1:2414
+[INFO][handler.go:73] 2022/10/20 17:27:28 connection closed: 127.0.0.1:2415
+[INFO][handler.go:112] 2022/10/20 17:27:28 handler shutting down...
+[INFO][server.go:40] 2022/10/20 17:29:37 start listen
+[INFO][server.go:67] 2022/10/20 17:30:34 accepted link
+[INFO][server.go:67] 2022/10/20 17:30:35 accepted link
+[INFO][server.go:50] 2022/10/20 17:36:22 shutting down
+[INFO][handler.go:112] 2022/10/20 17:36:22 handler shutting down...
+[INFO][handler.go:73] 2022/10/20 17:36:22 connection closed: 127.0.0.1:2939
+[INFO][handler.go:73] 2022/10/20 17:36:22 connection closed: 127.0.0.1:2937
+[INFO][handler.go:112] 2022/10/20 17:36:22 handler shutting down...
+[INFO][server.go:40] 2022/10/20 17:37:05 start listen
+[INFO][server.go:67] 2022/10/20 17:37:07 accepted link
+[INFO][server.go:67] 2022/10/20 17:37:07 accepted link
+[ERROR][handler.go:90] 2022/10/20 17:47:30 empty payload
+[ERROR][handler.go:90] 2022/10/20 17:47:30 empty payload
+[ERROR][handler.go:96] 2022/10/20 17:47:30 require multi bulk reply
+[INFO][handler.go:73] 2022/10/20 19:42:07 connection closed: 127.0.0.1:3202
+[INFO][handler.go:73] 2022/10/20 19:42:11 connection closed: 127.0.0.1:3201
+[INFO][server.go:50] 2022/10/20 19:54:33 shutting down
+[INFO][handler.go:112] 2022/10/20 19:54:33 handler shutting down...
+[INFO][server.go:40] 2022/10/20 21:05:33 start listen
+[INFO][server.go:50] 2022/10/20 21:05:34 shutting down
+[INFO][handler.go:112] 2022/10/20 21:05:34 handler shutting down...
+[INFO][server.go:40] 2022/10/20 21:05:37 start listen
+[INFO][server.go:67] 2022/10/20 21:05:51 accepted link
+[INFO][server.go:67] 2022/10/20 21:05:57 accepted link
+[ERROR][database.go:60] 2022/10/20 21:06:08 runtime error: invalid memory address or nil pointer dereference
+[INFO][server.go:50] 2022/10/20 21:07:40 shutting down
+[INFO][handler.go:112] 2022/10/20 21:07:40 handler shutting down...
+[INFO][handler.go:73] 2022/10/20 21:07:40 connection closed: 127.0.0.1:7118
+[INFO][handler.go:73] 2022/10/20 21:07:40 connection closed: 127.0.0.1:7123
+[INFO][handler.go:112] 2022/10/20 21:07:40 handler shutting down...
+[INFO][server.go:40] 2022/10/20 21:07:46 start listen
+[INFO][server.go:67] 2022/10/20 21:07:46 accepted link
+[INFO][server.go:67] 2022/10/20 21:07:46 accepted link
+[INFO][server.go:50] 2022/10/20 21:09:09 shutting down
+[INFO][handler.go:112] 2022/10/20 21:09:09 handler shutting down...
+[INFO][handler.go:73] 2022/10/20 21:09:09 connection closed: 127.0.0.1:7225
+[INFO][handler.go:73] 2022/10/20 21:09:09 connection closed: 127.0.0.1:7226
+[INFO][handler.go:112] 2022/10/20 21:09:09 handler shutting down...

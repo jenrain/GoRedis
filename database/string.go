@@ -63,9 +63,9 @@ func execStrLen(db *DB, args [][]byte) resp.Reply {
 }
 
 func init() {
-	RegisterCommand("Get", execGet, 2)
-	RegisterCommand("Set", execSet, 3)
-	RegisterCommand("SetNx", execSetnx, 3)
-	RegisterCommand("GetSet", execGetSet, 3)
-	RegisterCommand("StrLen", execStrLen, 2)
+	RegisterCommand("Get", execGet, readFirstKey, nil, 2)
+	RegisterCommand("Set", execSet, writeFirstKey, rollbackFirstKey, 3)
+	RegisterCommand("SetNx", execSetnx, writeFirstKey, rollbackFirstKey, 3)
+	RegisterCommand("GetSet", execGetSet, writeFirstKey, rollbackFirstKey, 3)
+	RegisterCommand("StrLen", execStrLen, readFirstKey, nil, 2)
 }

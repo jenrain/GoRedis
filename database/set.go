@@ -276,19 +276,19 @@ func execSDiff(db *DB, args [][]byte) resp.Reply {
 
 func init() {
 	// 插入一个成员
-	RegisterCommand("SAdd", execSAdd, -3)
+	RegisterCommand("SAdd", execSAdd, writeFirstKey, undoSetChange, -3)
 	// 判断给定参数是否是集合的成员
-	RegisterCommand("SIsMember", execSIsMember, 3)
+	RegisterCommand("SIsMember", execSIsMember, readFirstKey, nil, 3)
 	// 删除集合的一个或多个成员
-	RegisterCommand("SRem", execSRem, -3)
+	RegisterCommand("SRem", execSRem, writeFirstKey, undoSetChange, -3)
 	// 返回集合的成员数量
-	RegisterCommand("SCard", execSCard, 2)
+	RegisterCommand("SCard", execSCard, readFirstKey, nil, 2)
 	// 返回集合的所有成员
-	RegisterCommand("SMembers", execSMembers, 2)
+	RegisterCommand("SMembers", execSMembers, readFirstKey, nil, 2)
 	// 交集
-	RegisterCommand("SInter", execSInter, -2)
+	RegisterCommand("SInter", execSInter, prepareSetCalculate, nil, -2)
 	// 并集
-	RegisterCommand("SUnion", execSUnion, -2)
+	RegisterCommand("SUnion", execSUnion, prepareSetCalculate, nil, -2)
 	// 差集
-	RegisterCommand("SDiff", execSDiff, -2)
+	RegisterCommand("SDiff", execSDiff, prepareSetCalculate, nil, -2)
 }

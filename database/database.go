@@ -5,6 +5,7 @@ import (
 	"GoRedis/config"
 	"GoRedis/interface/resp"
 	"GoRedis/lib/logger"
+	"GoRedis/pubsub"
 	"GoRedis/resp/reply"
 	"strconv"
 	"strings"
@@ -13,8 +14,11 @@ import (
 // StandaloneDatabase Redis内核数据库
 // 是一个装有数据库map的切片
 type StandaloneDatabase struct {
-	dbSet      []*DB
+	dbSet []*DB
+	// 处理aof持久化
 	aofHandler *aof.AofHandler
+	// 处理发布/订阅
+	hub *pubsub.Hub
 }
 
 func NewStandaloneDatabase() *StandaloneDatabase {
@@ -23,11 +27,14 @@ func NewStandaloneDatabase() *StandaloneDatabase {
 		config.Properties.Databases = 16
 	}
 	database.dbSet = make([]*DB, config.Properties.Databases)
+	database.hub = pubsub.MakeHub()
+	// 初始化所有DB
 	for i := range database.dbSet {
 		db := makeDB()
 		db.index = i
 		database.dbSet[i] = db
 	}
+	// 初始化aof持久化
 	if config.Properties.AppendOnly {
 		aofHandler, err := aof.NewAofHandler(database)
 		if err != nil {
@@ -49,31 +56,46 @@ func NewStandaloneDatabase() *StandaloneDatabase {
 // set k v
 // get k
 // select 2
-func (database *StandaloneDatabase) Exec(client resp.Connection, args [][]byte) resp.Reply {
+func (Sdb *StandaloneDatabase) Exec(client resp.Connection, cmdLine [][]byte) resp.Reply {
 	// 防止突然终止程序
 	defer func() {
 		if err := recover(); err != nil {
 			logger.Error(err)
 		}
 	}()
-	cmdName := strings.ToLower(string(args[0]))
-	if cmdName == "select" {
-		// 发送的参数个数有问题
-		if len(args) != 2 {
-			return reply.MakeArgNumErrReply("select")
+	// 获取第一个命令的名称
+	cmdName := strings.ToLower(string(cmdLine[0]))
+
+	if cmdName == "subscribe" {
+		if len(cmdLine) < 2 {
+			return reply.MakeArgNumErrReply("subscribe")
 		}
-		return execSelect(client, database, args[1:])
+		return pubsub.Subscribe(Sdb.hub, client, cmdLine[1:])
+	} else if cmdName == "publish" {
+		return pubsub.Publish(Sdb.hub, cmdLine[1:])
+	} else if cmdName == "unsubscribe" {
+		return pubsub.UnSubscribe(Sdb.hub, client, cmdLine[1:])
+	} else if cmdName == "flushdb" {
+		if !validateArity(1, cmdLine) {
+			return reply.MakeArgNumErrReply(cmdName)
+		}
+		// 事务状态下无法执行flushdb命令
+		if client.InMultiState() {
+			return reply.MakeErrReply("ERR command 'FlushDB' cannot be used in MULTI")
+		}
+		return Sdb.flushDB(client.GetDBIndex())
 	}
+
 	dbIndex := client.GetDBIndex()
-	db := database.dbSet[dbIndex]
-	return db.Exec(client, args)
+	db := Sdb.dbSet[dbIndex]
+	return db.Exec(client, cmdLine)
 }
 
-func (database *StandaloneDatabase) AfterClientClose(c resp.Connection) {
+func (Sdb *StandaloneDatabase) AfterClientClose(c resp.Connection) {
 
 }
 
-func (database *StandaloneDatabase) Close() {
+func (Sdb *StandaloneDatabase) Close() {
 
 }
 
@@ -90,4 +112,33 @@ func execSelect(c resp.Connection, database *StandaloneDatabase, args [][]byte) 
 	}
 	c.SelectDB(dbIndex)
 	return reply.MakeOkReply()
+}
+
+// 清除一个db
+func (Sdb *StandaloneDatabase) flushDB(dbIndex int) resp.Reply {
+	if dbIndex >= len(Sdb.dbSet) || dbIndex < 0 {
+		return reply.MakeErrReply("ERR DB index is out of range")
+	}
+	newDB := makeDB()
+	Sdb.loadDB(dbIndex, newDB)
+	return &reply.OKReply{}
+}
+
+func (Sdb *StandaloneDatabase) loadDB(dbIndex int, newDB *DB) resp.Reply {
+	if dbIndex >= len(Sdb.dbSet) || dbIndex < 0 {
+		return reply.MakeErrReply("ERR DB index is out of range")
+	}
+	oldDB, _ := Sdb.selectDB(dbIndex)
+	newDB.index = dbIndex
+	newDB.addAof = oldDB.addAof
+	Sdb.dbSet[dbIndex] = newDB
+	return &reply.OKReply{}
+}
+
+// 根据下标返回db
+func (Sdb *StandaloneDatabase) selectDB(dbIndex int) (*DB, *reply.StandardErrReply) {
+	if dbIndex >= len(Sdb.dbSet) || dbIndex < 0 {
+		return nil, reply.MakeErrReply("ERR DB index is out of range")
+	}
+	return Sdb.dbSet[dbIndex], nil
 }

@@ -70,10 +70,6 @@ KEYS *
 
 ```*2\r\n$4\r\nKEYS\r\n$1\r\n*\r\n```
 
-**Flushdb**
-
-``*1\r\n$7\r\nFlushdb\r\n``
-
 **Exists City1**
 
 **Exists City3**

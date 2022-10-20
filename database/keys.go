@@ -114,12 +114,31 @@ func execKeys(db *DB, args [][]byte) resp.Reply {
 	return reply.MakeMultiBulkReply(result)
 }
 
+func undoDel(db *DB, args [][]byte) []CmdLine {
+	keys := make([]string, len(args))
+	for i, v := range args {
+		keys[i] = string(v)
+	}
+	return rollbackGivenKeys(db, keys...)
+}
+
+func undoRename(db *DB, args [][]byte) []CmdLine {
+	src := string(args[0])
+	dest := string(args[1])
+	return rollbackGivenKeys(db, src, dest)
+}
+
+func prepareRename(args [][]byte) ([]string, []string) {
+	src := string(args[0])
+	dest := string(args[1])
+	return []string{dest}, []string{src}
+}
+
 func init() {
-	RegisterCommand("DEL", execDel, -2)
-	RegisterCommand("EXISTS", execExists, -2)
-	RegisterCommand("flushdb", execFlushDB, -1)
-	RegisterCommand("type", execType, 2)
-	RegisterCommand("RENAME", execRename, 3)
-	RegisterCommand("RENAMENX", execRenamenx, 3)
-	RegisterCommand("KEYS", execKeys, 2)
+	RegisterCommand("DEL", execDel, writeAllKeys, undoDel, -2)
+	RegisterCommand("EXISTS", execExists, readAllKeys, nil, -2)
+	RegisterCommand("type", execType, readFirstKey, nil, 2)
+	RegisterCommand("RENAME", execRename, prepareRename, undoRename, 3)
+	RegisterCommand("RENAMENX", execRenamenx, prepareRename, undoRename, 3)
+	RegisterCommand("KEYS", execKeys, noPrepare, nil, 2)
 }

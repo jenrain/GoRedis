@@ -11,5 +11,5 @@ func Ping(db *DB, args [][]byte) resp.Reply {
 
 // 注册ping命令
 func init() {
-	RegisterCommand("ping", Ping, 1)
+	RegisterCommand("ping", Ping, noPrepare, nil, 1)
 }

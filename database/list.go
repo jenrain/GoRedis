@@ -343,28 +343,153 @@ func execLRange(db *DB, args [][]byte) resp.Reply {
 	return reply.MakeMultiBulkReply(result)
 }
 
+func undoLPush(db *DB, args [][]byte) []CmdLine {
+	key := string(args[0])
+	count := len(args) - 1
+	cmdLines := make([]CmdLine, 0, count)
+	for i := 0; i < count; i++ {
+		cmdLines = append(cmdLines, utils.ToCmdLine("LPOP", key))
+	}
+	return cmdLines
+}
+
+func undoRPush(db *DB, args [][]byte) []CmdLine {
+	key := string(args[0])
+	count := len(args) - 1
+	cmdLines := make([]CmdLine, 0, count)
+	for i := 0; i < count; i++ {
+		cmdLines = append(cmdLines, utils.ToCmdLine("RPOP", key))
+	}
+	return cmdLines
+}
+
+var lPushCmd = []byte("LPUSH")
+
+func undoLPop(db *DB, args [][]byte) []CmdLine {
+	key := string(args[0])
+	list, errReply := db.getAsList(key)
+	if errReply != nil {
+		return nil
+	}
+	if list == nil || list.Len() == 0 {
+		return nil
+	}
+	element, _ := list.Get(0).([]byte)
+	return []CmdLine{
+		{
+			lPushCmd,
+			args[0],
+			element,
+		},
+	}
+}
+
+var rPushCmd = []byte("RPUSH")
+
+func undoRPop(db *DB, args [][]byte) []CmdLine {
+	key := string(args[0])
+	list, errReply := db.getAsList(key)
+	if errReply != nil {
+		return nil
+	}
+	if list == nil || list.Len() == 0 {
+		return nil
+	}
+	element, _ := list.Get(list.Len() - 1).([]byte)
+	return []CmdLine{
+		{
+			rPushCmd,
+			args[0],
+			element,
+		},
+	}
+}
+
+func undoRPopLPush(db *DB, args [][]byte) []CmdLine {
+	sourceKey := string(args[0])
+	list, errReply := db.getAsList(sourceKey)
+	if errReply != nil {
+		return nil
+	}
+	if list == nil || list.Len() == 0 {
+		return nil
+	}
+	element, _ := list.Get(list.Len() - 1).([]byte)
+	return []CmdLine{
+		{
+			rPushCmd,
+			args[0],
+			element,
+		},
+		{
+			[]byte("LPOP"),
+			args[1],
+		},
+	}
+}
+
+func prepareRPopLPush(args [][]byte) ([]string, []string) {
+	return []string{
+		string(args[0]),
+		string(args[1]),
+	}, nil
+}
+
+func undoLSet(db *DB, args [][]byte) []CmdLine {
+	key := string(args[0])
+	index64, err := strconv.ParseInt(string(args[1]), 10, 64)
+	if err != nil {
+		return nil
+	}
+	index := int(index64)
+	list, errReply := db.getAsList(key)
+	if errReply != nil {
+		return nil
+	}
+	if list == nil {
+		return nil
+	}
+	size := list.Len() // assert: size > 0
+	if index < -1*size {
+		return nil
+	} else if index < 0 {
+		index = size + index
+	} else if index >= size {
+		return nil
+	}
+	value, _ := list.Get(index).([]byte)
+	return []CmdLine{
+		{
+			[]byte("LSET"),
+			args[0],
+			args[1],
+			value,
+		},
+	}
+}
+
 func init() {
 	// 头插
-	RegisterCommand("LPush", execLPush, -3)
-	RegisterCommand("LPushX", execLPushX, -3)
+	RegisterCommand("LPush", execLPush, writeFirstKey, undoLPush, -3)
+	RegisterCommand("LPushX", execLPushX, writeFirstKey, undoLPush, -3)
 	// 尾插
-	RegisterCommand("RPush", execRPush, -3)
-	RegisterCommand("RPushX", execRPushX, -3)
+	RegisterCommand("RPush", execRPush, writeFirstKey, undoLPush, -3)
+	RegisterCommand("RPushX", execRPushX, writeFirstKey, undoRPush, -3)
 	// 弹出头部元素
-	RegisterCommand("LPop", execLPop, 2)
+	RegisterCommand("LPop", execLPop, writeFirstKey, undoLPop, 2)
 	// 弹出尾部元素
-	RegisterCommand("RPop", execRPop, 2)
+	RegisterCommand("RPop", execRPop, writeFirstKey, undoRPop, 2)
 	// 根据count删除元素
 	// count == 0 删除等于value的所有元素
 	// count > 0  顺序删除count个value元素
 	// count < 0  逆序删除-count个value元素
-	RegisterCommand("LRem", execLRem, 4)
+	RegisterCommand("LRem", execLRem, writeFirstKey, rollbackFirstKey, 4)
 	// 获取列表长度
-	RegisterCommand("LLen", execLLen, 2)
+	RegisterCommand("LLen", execLLen, readFirstKey, nil, 2)
 	// 根据下标获取元素
-	RegisterCommand("LIndex", execLIndex, 3)
+	RegisterCommand("LIndex", execLIndex, readFirstKey, nil, 3)
 	// 设置指定下标处的值为value（覆盖原值）
-	RegisterCommand("LSet", execLSet, 4)
+	RegisterCommand("LSet", execLSet, writeFirstKey, undoLSet, 4)
 	// 返回指定区间的元素（返回一个切片）
-	RegisterCommand("LRange", execLRange, 4)
+	RegisterCommand("LRange", execLRange, readFirstKey, nil, 4)
 }

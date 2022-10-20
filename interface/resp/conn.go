@@ -8,4 +8,32 @@ type Connection interface {
 	GetDBIndex() int
 	// SelectDB 切换数据库
 	SelectDB(int)
+
+	/*
+	 *	事务相关
+	 */
+	// InMultiState 判断是否正在执行事务
+	InMultiState() bool
+	// SetMultiState 设置事务的执行状态
+	SetMultiState(bool)
+	// GetQueuedCmdLine 获取事务队列
+	GetQueuedCmdLine() [][][]byte
+	// EnqueueCmd 将事务命令入队
+	EnqueueCmd([][]byte)
+	// ClearQueuedCmd 清除事务队列中的命令
+	ClearQueuedCmd()
+	// GetWatching 获取Watching Map
+	GetWatching() map[string]uint32
+	// AddTxError 添加事务执行时出现的错误
+	AddTxError(err error)
+	// GetTxErrors 返回事务执行时出现的语法错误
+	GetTxErrors() []error
+
+	/*
+	 * 发布订阅相关
+	 */
+	Subscribe(channel string)
+	UnSubscribe(channel string)
+	SubsCount() int
+	GetChannels() []string
 }

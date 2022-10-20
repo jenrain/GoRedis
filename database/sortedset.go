@@ -384,23 +384,48 @@ func execZRemRangeByRank(db *DB, args [][]byte) resp.Reply {
 	return reply.MakeIntReply(removed)
 }
 
+func undoZAdd(db *DB, args [][]byte) []CmdLine {
+	key := string(args[0])
+	size := (len(args) - 1) / 2
+	fields := make([]string, size)
+	for i := 0; i < size; i++ {
+		fields[i] = string(args[2*i+2])
+	}
+	return rollbackZSetFields(db, key, fields...)
+}
+
+func undoZIncr(db *DB, args [][]byte) []CmdLine {
+	key := string(args[0])
+	field := string(args[2])
+	return rollbackZSetFields(db, key, field)
+}
+
+func undoZRem(db *DB, args [][]byte) []CmdLine {
+	key := string(args[0])
+	fields := make([]string, len(args)-1)
+	fieldArgs := args[1:]
+	for i, v := range fieldArgs {
+		fields[i] = string(v)
+	}
+	return rollbackZSetFields(db, key, fields...)
+}
 func init() {
 	// 插入一个成员
-	RegisterCommand("ZAdd", execZAdd, -4)
+	RegisterCommand("ZAdd", execZAdd, writeFirstKey, undoZAdd, -4)
 	// 返回成员的分数值
-	RegisterCommand("ZScore", execZScore, 3)
+	RegisterCommand("ZScore", execZScore, readFirstKey, nil, 3)
 	// 返回成员的排名
-	RegisterCommand("ZRank", execZRank, 3)
+	RegisterCommand("ZRank", execZRank, readFirstKey, nil, 3)
 	// 返回处于给定分数区间的成员数
-	RegisterCommand("ZCount", execZCount, 4)
+	RegisterCommand("ZCount", execZCount, readFirstKey, nil, 4)
 	// 返回集合的所有成员
-	RegisterCommand("ZCard", execZCard, 2)
+	RegisterCommand("ZCard", execZCard, readFirstKey, nil, 2)
 	// 通过索引区间返回指定区间内的成员
-	RegisterCommand("ZRange", execZRange, -4)
+	RegisterCommand("ZRange", execZRange, readFirstKey, nil, -4)
 	// 移除有序集合中的一个或多个成员
-	RegisterCommand("ZRem", execZRem, -3)
+	RegisterCommand("ZRem", execZRem, writeFirstKey, undoZRem, -3)
 	// 移除有序集合中给定的分数区间的所有成员
-	RegisterCommand("ZRemRangeByScore", execZRemRangeByScore, 4)
+	RegisterCommand("ZRemRangeByScore", execZRemRangeByScore, writeFirstKey, rollbackFirstKey, 4)
 	// 移除有序集合中给定的排名区间的所有成员
-	RegisterCommand("ZRemRangeByRank", execZRemRangeByRank, 4)
+	RegisterCommand("ZRemRangeByRank", execZRemRangeByRank, writeFirstKey, rollbackFirstKey, 4)
 }

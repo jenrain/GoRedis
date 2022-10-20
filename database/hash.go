@@ -31,7 +31,7 @@ func (db *DB) getOrInitDict(key string) (dict Dict.Dict, inited bool, errReply r
 	inited = false
 	// 需要创建
 	if dict == nil {
-		dict = Dict.MakeSyncDict()
+		dict = Dict.MakeSimpleDict()
 		db.PutEntity(key, &database.DataEntity{
 			Data: dict,
 		})
@@ -312,27 +312,53 @@ func execHGetAll(db *DB, args [][]byte) resp.Reply {
 	return reply.MakeMultiBulkReply(result[:i])
 }
 
+func undoHSet(db *DB, args [][]byte) []CmdLine {
+	key := string(args[0])
+	field := string(args[1])
+	return rollbackHashFields(db, key, field)
+}
+
+func undoHDel(db *DB, args [][]byte) []CmdLine {
+	key := string(args[0])
+	fields := make([]string, len(args)-1)
+	fieldArgs := args[1:]
+	for i, v := range fieldArgs {
+		fields[i] = string(v)
+	}
+	return rollbackHashFields(db, key, fields...)
+}
+
+func undoHMSet(db *DB, args [][]byte) []CmdLine {
+	key := string(args[0])
+	size := (len(args) - 1) / 2
+	fields := make([]string, size)
+	for i := 0; i < size; i++ {
+		fields[i] = string(args[2*i+1])
+	}
+	return rollbackHashFields(db, key, fields...)
+}
+
 func init() {
 	// 插入一个键值对
-	RegisterCommand("HSet", execHSet, 4)
+	RegisterCommand("HSet", execHSet, writeFirstKey, undoHSet, 4)
 	// 当key不存在时，插入一个键值对
-	RegisterCommand("HSetNX", execHSetNX, 4)
+	RegisterCommand("HSetNX", execHSetNX, writeFirstKey, undoHSet, 4)
 	// 获取key对应的value
-	RegisterCommand("HGet", execHGet, 3)
+	RegisterCommand("HGet", execHGet, readFirstKey, nil, 3)
 	// 判断key是否存在
-	RegisterCommand("HExists", execHExists, 3)
+	RegisterCommand("HExists", execHExists, readFirstKey, nil, 3)
 	// 删除一个或多个键值对
-	RegisterCommand("HDel", execHDel, -3)
+	RegisterCommand("HDel", execHDel, writeFirstKey, undoHDel, -3)
 	// 获取哈希表中的键值对个数
-	RegisterCommand("HLen", execHLen, 2)
+	RegisterCommand("HLen", execHLen, readFirstKey, nil, 2)
 	// 插入数个键值对
-	RegisterCommand("HMSet", execHMSet, -4)
+	RegisterCommand("HMSet", execHMSet, writeFirstKey, undoHMSet, -4)
 	// 获取数个key对应的value
-	RegisterCommand("HMGet", execHMGet, -3)
+	RegisterCommand("HMGet", execHMGet, readFirstKey, nil, -3)
 	// 获取所有key
-	RegisterCommand("HKeys", execHKeys, 2)
+	RegisterCommand("HKeys", execHKeys, readFirstKey, nil, 2)
 	// 获取所有value
-	RegisterCommand("HVals", execHVals, 2)
+	RegisterCommand("HVals", execHVals, readFirstKey, nil, 2)
 	// 获取所有key-value
-	RegisterCommand("HGetAll", execHGetAll, 2)
+	RegisterCommand("HGetAll", execHGetAll, readFirstKey, nil, 2)
 }
