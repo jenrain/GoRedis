@@ -42,17 +42,21 @@ func rollbackFirstKey(db *DB, args [][]byte) []CmdLine {
 	return rollbackGivenKeys(db, key)
 }
 
+// 万能回滚操作
+// 在命令执行前被用于构建undo log
 func rollbackGivenKeys(db *DB, keys ...string) []CmdLine {
 	var undoCmdLines [][][]byte
 	for _, key := range keys {
 		entity, ok := db.GetEntity(key)
+		// key不存在，说明接下来的操作是要set这个key，回滚操作就是将它删除
 		if !ok {
 			undoCmdLines = append(undoCmdLines,
 				utils.ToCmdLine("DEL", key),
 			)
+			// key存在，说明要对这个key做删除或者修改操作，回滚操作就是将它删除然后重新set进数据库
 		} else {
 			undoCmdLines = append(undoCmdLines,
-				utils.ToCmdLine("DEL", key), // clean existed first
+				utils.ToCmdLine("DEL", key),
 				aof.EntityToCmd(key, entity).Args,
 			)
 		}

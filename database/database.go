@@ -66,15 +66,19 @@ func (Sdb *StandaloneDatabase) Exec(client resp.Connection, cmdLine [][]byte) re
 	// 获取第一个命令的名称
 	cmdName := strings.ToLower(string(cmdLine[0]))
 
+	// 订阅频道
 	if cmdName == "subscribe" {
 		if len(cmdLine) < 2 {
 			return reply.MakeArgNumErrReply("subscribe")
 		}
 		return pubsub.Subscribe(Sdb.hub, client, cmdLine[1:])
+		// 向频道发送消息
 	} else if cmdName == "publish" {
 		return pubsub.Publish(Sdb.hub, cmdLine[1:])
+		// 退订频道
 	} else if cmdName == "unsubscribe" {
 		return pubsub.UnSubscribe(Sdb.hub, client, cmdLine[1:])
+		// 清除当前数据库
 	} else if cmdName == "flushdb" {
 		if !validateArity(1, cmdLine) {
 			return reply.MakeArgNumErrReply(cmdName)

@@ -38,22 +38,6 @@ func makeDB() *DB {
 	return db
 }
 
-//func (db *DB) Exec(c resp.Connection, cmdLine CmdLine) resp.Reply {
-//	// ping set setnx
-//	cmdName := strings.ToLower(string(cmdLine[0]))
-//	// 从map中取出命令
-//	cmd, ok := cmdTable[cmdName]
-//	if !ok {
-//		return reply.MakeErrReply("ERR unknown command" + cmdName)
-//	}
-//	if !validateArity(cmd.arity, cmdLine) {
-//		return reply.MakeArgNumErrReply(cmdName)
-//	}
-//	fun := cmd.executor
-//	// SET K V
-//	return fun(db, cmdLine[1:])
-//}
-
 func (db *DB) Exec(c resp.Connection, cmdLine CmdLine) resp.Reply {
 	cmdName := strings.ToLower(string(cmdLine[0]))
 	// 开始事务
@@ -100,8 +84,6 @@ func (db *DB) NormalExec(cmdLine CmdLine) resp.Reply {
 	prepare := cmd.prepare
 	write, _ := prepare(cmdLine[1:])
 	db.addVersion(write...)
-	//db.RWLocks(write, read)
-	//defer db.RWUnLocks(write, read)
 	fun := cmd.executor
 	return fun(db, cmdLine[1:])
 }

@@ -103,9 +103,9 @@ func execMulti(db *DB, conn resp.Connection) resp.Reply {
 // watching中储存了事务开启后所有key对应的版本号
 // cmdLines中储存了事务开启后入队的命令
 func (db *DB) ExecMulti(conn resp.Connection, watching map[string]uint32, cmdLines []CmdLine) resp.Reply {
-	// 可能会包含重复
 	writeKeys := make([]string, 0)
 	readKeys := make([]string, 0)
+	// 将命令中的写key和读key找出来
 	for _, cmdLine := range cmdLines {
 		cmdName := strings.ToLower(string(cmdLine[0]))
 		cmd := cmdTable[cmdName]
@@ -119,11 +119,9 @@ func (db *DB) ExecMulti(conn resp.Connection, watching map[string]uint32, cmdLin
 	for key := range watching {
 		watchingKeys = append(watchingKeys, key)
 	}
-	//readKeys = append(readKeys, watchingKeys...)
-	//db.RWLocks(writeKeys, readKeys)
-	//defer db.RWUnLocks(writeKeys, readKeys)
 
 	// 判断在事务中监视的key，现在的版本号有没有发生变化
+	// 如果版本号有变化，直接结束事务
 	if isWatchingChanged(db, watching) {
 		return reply.EmptyMultiBulkReply{}
 	}
@@ -132,23 +130,29 @@ func (db *DB) ExecMulti(conn resp.Connection, watching map[string]uint32, cmdLin
 	aborted := false
 	undoCmdLines := make([][]CmdLine, 0, len(cmdLines))
 	for _, cmdLine := range cmdLines {
+		// 获取命令的回滚函数
 		undoCmdLines = append(undoCmdLines, db.GetUndoLogs(cmdLine))
-		//result := db.execWithLock(cmdLine)
+		// 执行命令
 		result := db.NormalExec(cmdLine)
+		// 执行的过程中出现了错误
 		if reply.IsErrorReply(result) {
+			// 做个标记
 			aborted = true
-			// don't roll back failed commands
+			// 只回滚前面执行成功的命令，执行失败的命令不回滚
 			undoCmdLines = undoCmdLines[:len(undoCmdLines)-1]
 			break
 		}
 		results = append(results, result)
 	}
-	if !aborted { //success
+	// 命令全部执行成功
+	if !aborted {
+		// 增加写key的版本号
 		db.addVersion(writeKeys...)
 		return reply.MakeMultiRawReply(results)
 	}
-	// undo if aborted
+	// 执行失败，开始回滚命令
 	size := len(undoCmdLines)
+	// 逆向回滚
 	for i := size - 1; i >= 0; i-- {
 		curCmdLines := undoCmdLines[i]
 		if len(curCmdLines) == 0 {
@@ -166,7 +170,7 @@ func DiscardMulti(conn resp.Connection) resp.Reply {
 	if !conn.InMultiState() {
 		return reply.MakeErrReply("ERR DISCARD without MULTI")
 	}
-	// 清楚事务队列
+	// 清除事务队列
 	conn.ClearQueuedCmd()
 	conn.SetMultiState(false)
 	return reply.MakeOkReply()

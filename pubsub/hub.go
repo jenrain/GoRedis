@@ -2,13 +2,11 @@ package pubsub
 
 import "GoRedis/datastruct/dict"
 
-// Hub stores all subscribe relations
-// 储存所有的订阅关系
+// Hub 储存所有的订阅关系
+// 该map是map[string]*List结构，List中存的是客户端结构体，储存的是频道和频道的订阅者链表
 type Hub struct {
 	// channel -> list(*Client)
 	subs dict.Dict
-	//// lock channel
-	//subsLocker *lock.Locks
 }
 
 // MakeHub creates new hub

@@ -32,8 +32,12 @@ type Connection interface {
 	/*
 	 * 发布订阅相关
 	 */
+	// Subscribe 订阅频道
 	Subscribe(channel string)
+	// UnSubscribe 退订频道
 	UnSubscribe(channel string)
+	// SubsCount 返回频道的订阅者数量
 	SubsCount() int
+	// GetChannels 获取所有频道
 	GetChannels() []string
 }

@@ -32,7 +32,7 @@ type Connection struct {
 	/*
 	 * 发布订阅相关
 	 */
-	// 订阅的频道
+	// 当前客户端订阅的频道
 	subs map[string]bool
 }
 
@@ -136,7 +136,7 @@ func (c *Connection) GetTxErrors() []error {
  * 发布订阅相关
  */
 
-// Subscribe 将当前连接作为给定频道的连接者
+// Subscribe 将客户端订阅到给定的频道上
 func (c *Connection) Subscribe(channel string) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
@@ -158,7 +158,7 @@ func (c *Connection) UnSubscribe(channel string) {
 	delete(c.subs, channel)
 }
 
-// SubsCount 返回订阅频道的数量
+// SubsCount 返回频道的订阅者数量
 func (c *Connection) SubsCount() int {
 	return len(c.subs)
 }
