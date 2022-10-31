@@ -9,11 +9,15 @@
 
 1.使用sync.Map实现内存数据库，可以并发安全地处理多个客户端的读写请求。
 
-1.支持string、list、hash、set、sorted set数据结构。
+2.支持string、list、hash、set、sorted set数据结构。
 
-2.服务器与客户端之间使用RESP协议进行通信。
+3.服务器与客户端之间使用RESP协议进行通信。
 
-3.支持AOF持久化以及AOF重写。
+4.支持AOF持久化以及AOF重写。
+
+5.支持事务，实现了``watch``、``multi``、``exec``、``discard``命令。
+
+6.支持发布/订阅模式。
 
 
 ## 一个客户端命令的执行步骤
@@ -46,13 +50,89 @@
     4. set：sync.Map实现.
     5. sortedset：sync.Map和跳表共同实现.
     
-**5.AOF持久化和重写：**
 
-- 配置文件中开启了AOF（appendonly yes）就会执行AOF持久化和AOF重写.
-- 数据库引擎中有一个*aof.AofHandler字段，引擎本身在初始化的时候，就会调用NewAofHandler初始化*aof.AofHandler字段，如果可以读取到appendonly.aof文件，那么就会调用LoadAof()函数执行aof重写，重写会创建一个伪客户端，然后把aof文件中的命令都执行一遍.
-- 每个写命令和删除命令在执行的时候都会调用AddAof函数，该函数会将命令和数据库编号封装成payload并发送到handler.aofChan中.
-- 同时，在执行NewAofHandler的时候，程序会开启一个协程用来执行handler.handlerAof()，该函数监听handler.aofChan，并将命令落盘.
+## 核心功能说明
 
+### AOF持久化和重写
+
+如果配置文件中开启了AOF（appendonly yes），就会执行AOF持久化和AOF重写。
+
+**AOF重写**
+
+数据库在初始化的时候会调用``aof``包的``NewAofHandler``函数，该函数会从配置文件中读取aof持久化文件的路径和文件名，然就调用``handler.LoadAof``函数来处理aof文件。该函数首先会调用resp包中的``ParseStream``函数来解析文件中的指令，接着创建一个伪客户端来执行解析出来的所有命令，执行完之后，aof重写就完成了。
+
+**AOF持久化**
+
+AOF处理程序在初始化的时候会创建一个``handler.aofChan``通道，然后开启一个协程监听该通道，如果接收到值，就将通道中的指令落盘。
+
+数据库的每一个DB都有一个``addAof``字段，该字段是一个函数。数据库在初始化时，会为每一个DB都初始化这个函数。当数据库执行写指令时，该函数会将当前的DB编号以及指令，封装到一个payload结构体中，然后发送到``handler.aofChan``通道中。
+
+### 事务实现
+
+**如何监听key是否改变**
+
+主要是基于版本号来实现，每个``DB``中维护了一个``versionMap``，是``map[string]int``结构，用来储存每个key的版
+本号，每个命令体都内含三个函数：``prepare``、``exec``、``undo``，分别用于提取出被写和被读的key、执行命令以及
+命令回滚，每条命令在执行前都会调用prepare函数，提取出被写的key，然后更新版本号。
+
+**watch的实现**
+
+``watch``是一个乐观锁，每个客户端结构体都有一个储存被监视key的map，如果执行了``watch``命令，程序会把
+``watch``后面的key都储存进一个``watchMap``（map[string]int，储存key的名字和版本号），在执行事务前，程序会检查watchMap中的所有key，如果
+某个key的版本发生了变化，会直接结束事务。
+
+**事务开始**
+
+每个客户端结构体都有一个标记事务状态的变量：``multiState``，事务开始时，程序会将这个变量标记为``true``。
+
+**事务开始之后**
+
+每个客户端结构体都有一个储存事务命令的队列：``queue``，每条命令在执行前都会先判断当前的事务状态，
+即判断``multiState``是否为``true``，如果为``true``，那么不会立即执行这条命令，而是将它储存进事务队列中。
+每个客户端结构体都有一个储存事务执行时出现错误的切片：``txErrors``，在将命令储存进事务队列之前，会先判断这条
+命令是否存在或者是否有语法错误，如果有，就先将``error``放入``txErrors``切片中，然后再将命令入队。
+
+**取消事务**
+
+将事务状态``multiState``设置为``false``，再将事务队列清空即可。
+
+**执行事务**
+
+1. 首先判断``txErrors``切片中是否有值，如果该切片中有值，说明命令有错误，那么会直接放弃事务。
+2. 接着将每条命令中被写的key都取出来，然后与``watchMap``中的版本号做比较，如果版本号发生变化，
+  会直接结束事务。
+3. 接着开始正式执行事务队列中的命令，一边执行命令一边取出每条命令对应的回滚函数，存进一个切片``undoCmdLines``中，
+  如果执行命令的过程中出现了语义错误，就停止执行后面的命令，逆向执行``undoCmdLines``中的回滚函数即可。
+
+**回滚**
+
+在执行每一条命令之前，程序会先根据这条命令生成对应的回滚命令，然后存到一个切片里面，如果中间某条命令执行失败，就根据切片中的命令进行回滚。
+回滚命令的生成与原命令是对应的，比如SET的回滚命令就是DEL，RPUSH的回滚命令就是RPOP，如果某条命令的执行流程较为复杂，那么会执行一个万能回滚命令：``rollbackGivenKeys``，该函数比较简单粗暴，它会将key直接删除，然后将原来key对应的数据重新set进数据库。
+
+### 发布/订阅实现
+
+**主要的数据结构**
+
+客户端维护的信息：客户端维护了一个``map``，该``map``的结构是``map[string]true``，表示该客户端订阅了哪些频道。（下面简称为``clientMap``）
+服务器维护的信息：服务器的``pubsub``包中维护了一个``subs map``，该``map``是``map[string]*List``结构，List中存的是
+客户端结构体，储存的是频道和频道的订阅者链表。（下面简称为``serverMap``）。
+
+**订阅频道**
+
+首先向``clientMap``中添加这个频道，然后向``serverMap``中添加相关信息：
+ 	1. 如果``serverMap``中存在该频道，那么取出``client``链表，再将当前``client`添加进去。
+ 	2. 如果``serverMap``中不存在该频道，那么创建``client``链表，再将当前``client``添加进去。
+
+**退订频道**
+
+首先向``clientMap``中删除这个频道，然后向``serverMap``中删除相关信息：
+
+1. 如果``serverMap``中存在该频道，那么取出``client``链表，再将当前``client``删除。
+2. 如果``serverMap``中不存在该频道，直接向客户端返回错误信息。
+
+**发送消息**
+
+从``serverMap``中取出对应的频道以及频道的订阅者链表，然后遍历链表，依次向订阅者发送消息。
 
 ## 实现命令
 
@@ -90,8 +170,33 @@ KEYS *
 
 ``*3\r\n$8\r\nRenamenx\r\n$5\r\nCity3\r\n$5\r\nCity1\r\n``
 
+**FlushDB**
 
-### 字符串对象：
+``*1\r\n$7\r\nFlushDB\r\n``
+
+### 事务命令：
+
+**监听key**
+``*2\r\n$5\r\nWatch\r\n$5\r\nCity1\r\n``
+**开始事务**
+``*1\r\n$5\r\nMulti\r\n``
+**执行事务**
+``*1\r\n$4\r\nExec\r\n``
+**放弃事务**
+``*1\r\n$7\r\nDiscard\r\n``
+
+### 发布订阅命令
+
+**订阅一个或多个频道 Subscribe Chan1**
+``*2\r\n$9\r\nSubscribe\r\n$5\r\nChan1\r\n``
+**向一个频道发消息 Publish Chan1**
+``*3\r\n$7\r\nPublish\r\n$5\r\nChan1\r\n$5\r\nhello\r\n``
+**退订一个或多个频道 UnSubscribe Chan1**
+``*2\r\n$11\r\nUnSubscribe\r\n$5\r\nChan1\r\n``
+
+### 五大数据结构相关命令：
+
+#### 字符串对象：
 
 **Set City1 Shanghai**
 
@@ -121,7 +226,7 @@ KEYS *
 
 ``*2\r\n$6\r\nStrLen\r\n$5\r\nCity2\r\n``
 
-### 列表对象：
+#### 列表对象：
 
 **LPush fruit apple banana peach**
 
@@ -175,7 +280,8 @@ KEYS *
 
 ``*4\r\n$6\r\nLRange\r\n$5\r\nfruit\r\n$1\r\n0\r\n$1\r\n3\r\n``
 
-### 哈希对象：
+#### 哈希对象：
+
 **HSet age lihua 18**
 
 ``*4\r\n$4\r\nHSet\r\n$3\r\nage\r\n$5\r\nlihua\r\n$2\r\n18\r\n``
@@ -224,7 +330,7 @@ KEYS *
 
 ``*2\r\n$7\r\nHGetAll\r\n$3\r\nage\r\n``
 
-### 集合对象：
+#### 集合对象：
 
 **SAdd fruit1 banana apple**
 
@@ -270,7 +376,7 @@ KEYS *
 
 ``*3\r\n$5\r\nSDiff\r\n$6\r\nfruit1\r\n$6\r\nfruit2\r\n``
 
-### 有序集合对象：
+#### 有序集合对象：
 
 **ZAdd meet pork 18 beef 20 mutton 22**
 
@@ -315,5 +421,4 @@ KEYS *
 **ZRemRangeByRank meet 0 1**
 
 ``*4\r\n$15\r\nZRemRangeByRank\r\n$4\r\nmeet\r\n$1\r\n0\r\n$1\r\n1\r\n``
-
 
